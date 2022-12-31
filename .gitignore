@@ -1,4 +1,4 @@
 /birds2angry.session-journal
-/__pycache__/
+*/__pycache__/
 /venv/
 config.yml
