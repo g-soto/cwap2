@@ -1,11 +1,14 @@
 from telethon import events
 
 class CWWatcher:
+    
+    CW_BOT = '@chtwrsbot'
+
     def __init__(self, inform_event: callable) -> None:
         self.inform_event = inform_event
         self.watchs = [self.watch_for_craft]
         
-    @events.register(events.NewMessage(outgoing=False))
+    @events.register(events.NewMessage(outgoing=False, chats=CW_BOT))
     async def watch_for_craft(self, event):
         if self.is_craft_message(event):
             await self.inform_event(event.message)
