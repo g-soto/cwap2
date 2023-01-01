@@ -18,5 +18,8 @@ class CWWatcher:
 
     @events.register(events.NewMessage(outgoing=False, chats=CW_BOT))
     async def watch_for_time(self, event):
-        if "Weather forecast" in event.raw_text:
+        if self.is_weather_message(event):
             await self.inform_event("new_weather", event.message)
+
+    def is_weather_message(self, message):
+        return "Weather forecast" in message.raw_text
