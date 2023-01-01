@@ -11,7 +11,7 @@ class CWWatcher:
     @events.register(events.NewMessage(outgoing=False, chats=CW_BOT))
     async def watch_for_craft(self, event):
         if self.is_craft_message(event):
-            await self.inform_event(event.message)
+            await self.inform_event("new_craft", event.message)
 
     def is_craft_message(self, message):
         return 'has ordered' in message.raw_text
