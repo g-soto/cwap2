@@ -13,7 +13,7 @@ class TGClient:
 
     async def start(self):
         await self.client.start()
-        return await self.client.run_until_disconnected()
+        return await aio.wait([aio.create_task(self.client.run_until_disconnected()), aio.create_task(self.time_requester())])
 
     async def stop(self):
         return await self.client.disconnect()
@@ -43,3 +43,9 @@ class TGClient:
         p = ChatPerformer(**self.performer_methods)
         for source, performer in p.subs:
             self.subscriptions[source].append(performer)
+
+    async def time_requester(self):
+        waiting_time = 30*60
+        while self.client.is_connected():
+            await self.new_chat_event("request_weather", None)
+            await aio.sleep(waiting_time)
