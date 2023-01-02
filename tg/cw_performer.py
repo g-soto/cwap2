@@ -1,6 +1,6 @@
 class CWPerformer:
 
-    CW_BOT = '@chtwrsbot'
+    CW_BOT = "@chtwrsbot"
 
     def __init__(self, post_message, **_) -> None:
         self.post_message = post_message

@@ -1,11 +1,14 @@
-from tg import create_client
 import asyncio as aio
 import logging
 
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
+from tg import create_client
 
-    
-if __name__ == '__main__':
+logging.basicConfig(
+    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
+)
+
+
+if __name__ == "__main__":
     client = create_client()
     with aio.Runner() as runner:
         try:
