@@ -20,7 +20,11 @@ class CWWatcher:
 
     def __init__(self, inform_event: callable) -> None:
         self.inform_event = inform_event
-        self.watchs = [self.watch_for_craft, self.watch_for_time]
+        self.watchs = [
+            self.watch_for_craft,
+            self.watch_for_time,
+            self.watch_for_messages
+        ]
         self.last_weather = None
 
     @events.register(events.NewMessage(outgoing=False, chats=CW_BOT))
@@ -44,3 +48,7 @@ class CWWatcher:
             return False
         self.last_weather = new_weather
         return True
+
+    @events.register(events.NewMessage(outgoing=False, chats=CW_BOT))
+    async def watch_for_messages(self, event):
+        await self.inform_event("new_cw_message", event.message)

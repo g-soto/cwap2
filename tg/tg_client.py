@@ -2,6 +2,7 @@ import asyncio as aio
 from collections import defaultdict
 
 from telethon import TelegramClient
+
 from config import config
 
 
@@ -13,6 +14,7 @@ class TGClient:
             api_hash=config.telegram_api.HASH,
             connection_retries=None,
         )
+
         self.subscriptions = defaultdict(list)
         self.performer_methods = {
             val.__name__: val
