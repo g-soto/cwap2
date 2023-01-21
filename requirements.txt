@@ -21,3 +21,4 @@ rsa
 Telethon
 yarl
 PyYAML
+dependency-injector

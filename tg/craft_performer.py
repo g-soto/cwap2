@@ -1,6 +1,9 @@
+from config import config
+
+
 class CraftPerformer:
 
-    GURU_CHANNEL = "https://t.me/roadtoguru"
+    GURU_CHANNEL = config.channels.GURU
 
     def __init__(
         self,
@@ -14,7 +17,6 @@ class CraftPerformer:
             ("new_craft", self.new_craft),
             ("new_weather", self.new_weather_report),
         ]
-        self.last_weather = None
 
     async def new_craft(self, message):
         await self.post_message(self.GURU_CHANNEL, message)

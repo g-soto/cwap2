@@ -4,7 +4,7 @@ import pytest
 
 from .cw_watcher import CWWatcher
 
-weather = ("🌙", "☀️", "☀️")
+weather = ("🌙Evening", "☀️", "☀️")
 MockMessage = namedtuple("MockMessage", ("raw_text",))
 
 
@@ -12,7 +12,7 @@ MockMessage = namedtuple("MockMessage", ("raw_text",))
 def message():
     return MockMessage(
         raw_text="In Chat Wars world now\n"
-        f"{weather[0]}Evening\n"
+        f"{weather[0]}\n"
         "18:41\n"
         "13 Winni 1074\n"
         "\n"

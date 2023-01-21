@@ -1,9 +1,11 @@
 import regex as re
 from telethon import events
 
+from config import config
+
 weather_re = re.compile(
     "In Chat Wars world now\n"
-    "(\\W+)\\w+\n"
+    "\\W+\\w+\n"
     "[0-9:]+\\n"
     "\\d+ \\w+ \\d+\n"
     "\n"
@@ -14,7 +16,7 @@ weather_re = re.compile(
 
 class CWWatcher:
 
-    CW_BOT = "@chtwrsbot"
+    CW_BOT = config.channels.CW
 
     def __init__(self, inform_event: callable) -> None:
         self.inform_event = inform_event

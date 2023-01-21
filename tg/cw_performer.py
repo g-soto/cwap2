@@ -1,6 +1,9 @@
+from config import config
+
+
 class CWPerformer:
 
-    CW_BOT = "@chtwrsbot"
+    CW_BOT = config.channels.CW
 
     def __init__(self, post_message, **_) -> None:
         self.post_message = post_message
